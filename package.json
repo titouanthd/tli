@@ -12,7 +12,7 @@
         "jest": "NODE_ENV=test jest src/Tests/**/*.ts --verbose --no-cache --detectOpenHandles"
     },
     "keywords": [],
-    "author": "titouanthd <t.thebaud@infonet-group.com>",
+    "author": "titouanthd <titouan.thd@gmail.com>",
     "license": "ISC",
     "dependencies": {
         "commander": "^12.0.0",
