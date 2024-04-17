@@ -12,7 +12,7 @@ export default class LoggerService {
         }
     }
 
-    static getInstance() {
+    public static getInstance() {
         if (!LoggerService.instance) {
             LoggerService.instance = new LoggerService();
         }
