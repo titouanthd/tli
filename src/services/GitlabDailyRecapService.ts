@@ -233,11 +233,12 @@ export default class GitlabDailyRecapService {
         }[],
         formattedNewIssues: { title: string; created_at: string; link: string | null }[],
     ) {
+        this.#logger.log('Printing daily recap');
         let report = SEPARATOR + '\n';
         report += `*Daily report for ${todayMidnight}*\n`;
 
-        report += '*Work on:*\n';
         if (formattedCommits.length > 0) {
+            report += '*Work on:*\n';
             for (const work of formattedCommits) {
                 if (work.branch_link !== null) {
                     report += ` - ${work.ref_type} [${work.ref}](${work.branch_link}) with ${work.commit_count} commits\n`;
@@ -245,12 +246,10 @@ export default class GitlabDailyRecapService {
                     report += ` - ${work.ref_type} ${work.ref} with ${work.commit_count} commits\n`;
                 }
             }
-        } else {
-            report += ' - No work on\n';
         }
 
-        report += '*MR approved:*\n';
         if (formattedMergeRequestsApprovals.length > 0) {
+            report += '*MR approved:*\n';
             for (const mra of formattedMergeRequestsApprovals) {
                 if (mra.link !== null) {
                     report += ` - ${mra.action_name} mr [${mra.target_title}](${mra.link})\n`;
@@ -258,12 +257,10 @@ export default class GitlabDailyRecapService {
                     report += ` - ${mra.action_name} mr ${mra.target_title}\n`;
                 }
             }
-        } else {
-            report += ' - No reviews\n';
         }
 
-        report += '*Feedbacks:*\n';
         if (formattedFeedBacks.length > 0) {
+            report += '*Feedbacks:*\n';
             for (const feedback of formattedFeedBacks) {
                 if (feedback.link !== null) {
                     report += ` - feedback on ${feedback.noteable_type} [${feedback.target_title}](${feedback.link}) with ${feedback.count} notes\n`;
@@ -271,12 +268,10 @@ export default class GitlabDailyRecapService {
                     report += ` - Feedback on ${feedback.noteable_type} ${feedback.target_title} with ${feedback.count} notes\n`;
                 }
             }
-        } else {
-            report += ' - No feedbacks\n';
         }
 
-        report += '*New issues:*\n';
         if (formattedNewIssues.length > 0) {
+            report += '*New issues:*\n';
             for (const issue of formattedNewIssues) {
                 if (issue.link !== null) {
                     report += ` - [${issue.title}](${issue.link})\n`;
@@ -284,8 +279,6 @@ export default class GitlabDailyRecapService {
                     report += ` - ${issue.title}\n`;
                 }
             }
-        } else {
-            report += ' - No new issues\n';
         }
 
         report += SEPARATOR;
