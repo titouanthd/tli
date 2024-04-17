@@ -15,9 +15,8 @@ export default class GitlabDailyRecapService {
         }
         this.#logger.log(`Got user ${user.username}`);
 
-        const todayMidnight = new Date(new Date().setHours(0, 0, 0, 0)).toISOString().split('T')[0];
         const yesterdayMidnight = new Date(new Date().setHours(0, 0, 0, 0) - 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-        this.#logger.log(`Getting user events for : ${encodeURIComponent(todayMidnight)}...`);
+        this.#logger.log(`Getting user events for : ${encodeURIComponent(yesterdayMidnight)}...`);
         let page = 0;
         const userEvents = [];
         while (true) {
@@ -36,7 +35,7 @@ export default class GitlabDailyRecapService {
             return false;
         }
 
-        this.#logger.log(`Got all user events ${userEvents.length} after ${todayMidnight}`);
+        this.#logger.log(`Got all user events ${userEvents.length} after ${yesterdayMidnight}`);
         userEvents.reverse();
         this.#logger.log('Events reversed => oldest first');
 
@@ -195,7 +194,7 @@ export default class GitlabDailyRecapService {
 
         this.#logger.log('Formatted new issues');
 
-        this.printRecap(todayMidnight, formattedCommits, formattedMergeRequestsApprovals, formattedFeedBacks, formattedNewIssues);
+        this.printRecap(yesterdayMidnight, formattedCommits, formattedMergeRequestsApprovals, formattedFeedBacks, formattedNewIssues);
 
         return true;
     }
