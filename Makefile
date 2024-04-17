@@ -35,7 +35,8 @@ global_install:
 	# with that you can use tli from anywhere
 	make install
 	npm install -g .
-	chmod +x BIN_PATH # make it executable
+	# make it executable
+	chmod +x $(BIN_PATH)
 	tli -h
 
 uninstall:
