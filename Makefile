@@ -20,7 +20,7 @@ eslint:
 	npx eslint -c eslint-config.json src
 
 prettier:
-	npm run format
+	npm run prettier
 
 lint:
 	make prettier

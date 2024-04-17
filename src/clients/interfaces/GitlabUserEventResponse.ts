@@ -43,7 +43,7 @@ interface PushData {
     ref_count: string | null;
 }
 
-export default interface GitlabUserEventResponse {
+interface GitlabUserEvent {
     id: number;
     project_id: number;
     action_name: string;
@@ -59,4 +59,6 @@ export default interface GitlabUserEventResponse {
     note: Note | undefined;
 }
 
-export { Author, Note, PushData };
+export default interface GitlabUserEventResponse extends Array<GitlabUserEvent> {}
+
+export { Author, Note, PushData, GitlabUserEvent };
