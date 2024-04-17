@@ -45,4 +45,4 @@ dev:
 	$(NODE_DEV) $(TS_NODE) $(DEV_PATH) $(cmd)
 
 prod:
-	$(NODE_PROD) $(BIN_PATH) $(cmd) $(cmd)
+	$(NODE_PROD) $(BIN_PATH) $(cmd)
