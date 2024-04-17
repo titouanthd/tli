@@ -249,13 +249,13 @@ export default class GitlabDailyRecapService {
             report += ' - No work on\n';
         }
 
-        report += '*Merge requests approvals:*\n';
+        report += '*MR approved:*\n';
         if (formattedMergeRequestsApprovals.length > 0) {
             for (const mra of formattedMergeRequestsApprovals) {
                 if (mra.link !== null) {
-                    report += ` - ${mra.action_name} MergeRequest [${mra.target_title}](${mra.link})\n`;
+                    report += ` - ${mra.action_name} mr [${mra.target_title}](${mra.link})\n`;
                 } else {
-                    report += ` - ${mra.action_name} MergeRequest ${mra.target_title}\n`;
+                    report += ` - ${mra.action_name} mr ${mra.target_title}\n`;
                 }
             }
         } else {
@@ -266,7 +266,7 @@ export default class GitlabDailyRecapService {
         if (formattedFeedBacks.length > 0) {
             for (const feedback of formattedFeedBacks) {
                 if (feedback.link !== null) {
-                    report += ` - Feedback on ${feedback.noteable_type} [${feedback.target_title}](${feedback.link}) with ${feedback.count} notes\n`;
+                    report += ` - feedback on ${feedback.noteable_type} [${feedback.target_title}](${feedback.link}) with ${feedback.count} notes\n`;
                 } else {
                     report += ` - Feedback on ${feedback.noteable_type} ${feedback.target_title} with ${feedback.count} notes\n`;
                 }
